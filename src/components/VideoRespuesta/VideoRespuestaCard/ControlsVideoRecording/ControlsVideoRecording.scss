@@ -1,0 +1,35 @@
+.controles{
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-right: 13px;
+  padding-left: 44px;
+  .tools{
+    margin: 0 auto;
+    .material-icons{
+      font-size: 24px;
+      border-radius: 4px;
+      color: rgba(255, 255, 255, 0.6);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding:8px;
+      margin-right: 12px;
+      &:hover{
+        color: rgba(255, 255, 255, 1);
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+  .options{
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 7px;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    font-size: 18px;
+  }
+}

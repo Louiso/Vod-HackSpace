@@ -1,0 +1,62 @@
+.grabacionCard{
+  width: 310px;
+  height: 399px;
+  background-color: white;
+  box-shadow: 0 1px 4px 0 rgba(0,21,41,0.12);
+  &__media{
+    width: 310px;
+    height: 200px;
+    background-color: rgb(102, 122, 141);
+    position: relative;
+    .button-play{
+      position: absolute;
+      right: 30px;
+      bottom: -30px;
+      width: 60px;
+      height: 60px;
+      background-color: #1890FF;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: solid 3px white;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 3px 8px 0 rgba(0,0,0,0.26);
+    }
+  }
+  &__info{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    &__contador{
+      font-weight: italic;
+      font-style: italic;
+      color: #8C8C8C;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    &__pregunta{
+      height: 78px;
+      margin-top: 8px;
+      color: #262626;
+      font-weight: 500;
+      line-height: 26px;
+    }
+    &__divider{
+      margin-top: 14px;
+      height: 1px;
+      width: 269px;
+      transform: scaleY(-1);
+      background-color: #D8D8D8;
+    }
+    &__timeStamp{
+      margin-top: 14px;
+      color: #595959;
+      font-family: Roboto;
+      font-size: 14px;
+      line-height: 22px;
+      text-align: right;
+    }
+  }
+}

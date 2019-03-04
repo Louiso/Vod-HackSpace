@@ -1,0 +1,18 @@
+.circle-red{
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #FF0019;
+  position: relative;
+  &::after{
+    content: "REC";
+    position: absolute;
+    right: -44px;
+    top: -3px;
+    font-size: 18px;
+    color: #FF0019;
+  }
+  &-hidden{
+    opacity: 0;
+  }
+}

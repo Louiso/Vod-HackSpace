@@ -1,0 +1,23 @@
+.lista-video-respuestas {
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  align-items: center;
+  transition: all 1s ease;
+  left: calc( 0 * (-760px + -16%));
+  &__wrapper {
+    width: 760px;
+    height: 464px;
+    margin: 0 auto;
+    position: relative;
+    // &::after{
+    //   position: absolute;
+    //   content: "";
+    //   left: 0;
+    //   top: 0;
+    //   width: 759px;
+    //   height: 463px;
+    //   border: solid 1px black;
+    // }
+  }
+}
