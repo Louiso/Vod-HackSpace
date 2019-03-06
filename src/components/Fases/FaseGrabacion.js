@@ -1,22 +1,14 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState , useEffect, useContext } from 'react'
 import VideoRespuestaCardList from '../VideoRespuesta/VideoRespuestaCardList/VideoRespuestaCardList';
 import { getStream } from '../../config/webcam';
 import { Modal } from 'antd'
-const FaseGrabacion = ({vod}) => {
-  const [ videoRespuestas ] = useState(vod.videoRespuestas);
-  const [ videoRespuestaActual, setVideoRespuestaActual ] = useState(0);
+import VodContext from '../../Context/VodContext';
+import './FaseGrabacion.scss'
+
+const FaseGrabacion = () => {
+  const { vod: { videoRespuestas, videoRespuestaActual } } = useContext(VodContext);
   const [ webRTC , setWebRTC ] = useState({stream: null})
   const [ openModal , setOpenModal ] = useState(false);
-  const next = () => {
-    if(videoRespuestaActual + 1 < videoRespuestas.length){
-      setVideoRespuestaActual(videoRespuestaActual + 1);
-    }
-  }
-  const prev = () => {
-    if(videoRespuestaActual > 0){
-      setVideoRespuestaActual(videoRespuestaActual - 1);
-    }
-  }
   const renderPoints = () => {
     return videoRespuestas.map((_, index)=>(
       <div 
@@ -55,14 +47,9 @@ const FaseGrabacion = ({vod}) => {
         </div>
       </Modal>
       <VideoRespuestaCardList
-        next = { next }
-        prev = { prev }
-        videoRespuestas = { videoRespuestas } 
-        videoRespuestaActual = { videoRespuestaActual }
         webRTC = { webRTC }
         />
       <div className = "puntos">{renderPoints()}</div>
-      <div className = "soporte-tecnico"><span className = "name">Soporte Tecnico</span><i className = "material-icons chat">chat</i></div>
     </div>
   )
 }

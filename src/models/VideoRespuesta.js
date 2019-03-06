@@ -1,7 +1,8 @@
 class VideoRespuesta {
   constructor(pregunta){
     this.pregunta = pregunta;
-    this.urlVideo = null;
+    this.videoURL = null;
+    this.chunksLength = null;
   }
 }
 

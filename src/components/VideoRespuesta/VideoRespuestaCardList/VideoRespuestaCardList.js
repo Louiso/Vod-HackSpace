@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import VideoRespuestaCard from '../VideoRespuestaCard/VideoRespuestaCard';
 
 import './VideoRespuestaCardList.scss'
+import VodContext from '../../../Context/VodContext';
 
-const VideoRespuestaCardList = ({videoRespuestaActual, videoRespuestas, webRTC, next, prev }) => {
+const VideoRespuestaCardList = ({webRTC }) => {
+  const { vod: { videoRespuestaActual, videoRespuestas } } = useContext(VodContext);
   const renderCardList = () => {
     return videoRespuestas.map((videoRespuesta, index) => {
       const active = videoRespuestaActual === index;
@@ -14,8 +16,6 @@ const VideoRespuestaCardList = ({videoRespuestaActual, videoRespuestas, webRTC, 
           key = { index } 
           index = { index + 1 } 
           active = { active }
-          next = { next }
-          prev = { prev }
           />
       )
     })

@@ -1,4 +1,4 @@
-import React , { useState , useRef, useEffect } from 'react';
+import React , { useState , useRef, useEffect, useContext } from 'react';
 
 import './VideoRespuestaCard.scss';
 import VideoRecorder from '../../../models/VideoRecorder';
@@ -6,6 +6,7 @@ import ButtonRecordingStart from './ButtomRecordingStart/ButtonRecordingStart';
 import ControlsVideoRecording from './ControlsVideoRecording/ControlsVideoRecording';
 import CircleRed from './CircleRed/CircleRed';
 import TimeStamp from './TimeStamp/TimeStamp';
+import VodContext from '../../../Context/VodContext';
 
 export const STATUS = {
   STOP: 0,
@@ -13,7 +14,8 @@ export const STATUS = {
   PLAY: 2,
   PAUSE: 3
 };
-const VideoRespuestaCard = ({ active , webRTC: { stream }, index, videoRespuesta, next , prev}) => {
+const VideoRespuestaCard = ({ active , webRTC: { stream }, index, videoRespuesta }) => {
+  const { dispatch } = useContext(VodContext);
   const videoRecorder = VideoRecorder.useVideoRecorder(stream,active);
   const [ status , setStatus ] = useState(STATUS.STOP);
   const video = useRef(null);
@@ -30,25 +32,36 @@ const VideoRespuestaCard = ({ active , webRTC: { stream }, index, videoRespuesta
     }
     setStatus(STATUS.PLAY);
   }
-  const reloadRecording = () => {
-    videoRecorder.stopRecording();
+  const reloadRecording = async () => {
+    await videoRecorder.stopRecording();
     setStatus(STATUS.START_ANIMATION);
   }
-  const stopRecording = () => {
-    videoRecorder.stopRecording();
+  const stopRecording = async () => {
+    const { videoURL, chunksLength } = await videoRecorder.stopRecording();
+    dispatch({
+      type: 'updateVideoRespuesta',
+      videoRespuesta:{
+        ...videoRespuesta,
+        videoURL: videoURL,
+        chunksLength: chunksLength
+      },
+      index: index - 1
+    });
     setStatus(STATUS.STOP);
   }
 
   useEffect(() => {
+    // console.log(index,stream, active, videoRecorder);
     if(stream && active && videoRecorder){
-      video.current.srcObject = stream;
-      video.current.muted = true;
-      video.current.play();  
+      if(!video.current.srcObject){
+        video.current.srcObject = stream;
+        video.current.muted = true;
+      }
+      video.current.play();
     }else{
       video.current.pause();
     }
   },[stream, active, videoRecorder]);
-
   
   const renderButton = () => {
     if(status === STATUS.STOP || status === STATUS.PAUSE || status === STATUS.START_ANIMATION ){
@@ -73,8 +86,8 @@ const VideoRespuestaCard = ({ active , webRTC: { stream }, index, videoRespuesta
         </div>
         { !active && (
           <>
-            <div className = "video-respuesta__header__before" onClick = { () => next() }></div>
-            <div className = "video-respuesta__header__after" onClick = { () => prev() }></div>
+            <div className = "video-respuesta__header__before" onClick = { () => dispatch({type: 'NEXT'}) }></div>
+            <div className = "video-respuesta__header__after" onClick = { () =>  dispatch({type: 'PREV'})}></div>
           </>
         ) }
       </div>
@@ -82,12 +95,10 @@ const VideoRespuestaCard = ({ active , webRTC: { stream }, index, videoRespuesta
         <div className = "video__wrapper">
           <video className = "video" ref = { video } muted = { true }/>
           <div className = "entrada">
-            { status === STATUS.PLAY && (
-              <div className = "feedback">
-                <CircleRed/>
-                <TimeStamp videoRecorder = { videoRecorder }/>
-              </div>
-            )}
+            <div className = "feedback">
+              {status === STATUS.PLAY && <CircleRed/> }
+              { (videoRecorder && videoRecorder.chunks.length >= 0) && <TimeStamp videoRecorder = { videoRecorder }/> }
+            </div>
             { renderButton() }
             { (status === STATUS.PLAY || status === STATUS.PAUSE) && (
               <div className = "entrada__footer">

@@ -1,0 +1,23 @@
+.window{
+  &__content-introduccion {
+    width: 100%;
+    transform: rotate(180deg);
+    margin-top: -102px;
+    display: flex;
+    justify-content: center;
+  
+    .fondo-introduccion {
+      width: 1014px;
+      height: 489px;
+    }
+  }
+  
+  &__skip {
+    // margin-top: 387px;
+    padding: 17px;
+    margin-left: 1075px;
+    color: #1890FF;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}

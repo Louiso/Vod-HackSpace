@@ -1,13 +1,41 @@
-.grid-grabacion{
-  position: absolute;
+.grid-grabacion {
   width: 100%;
-  top: 70px;
-  .grabacionCards-container{
+  margin-top: -102px;
+
+  .grabacionCards-container {
     display: grid;
     grid-template-columns: repeat(3, 310px);
     grid-column-gap: 60px;
     grid-template-rows: 1fr 1fr;
     grid-row-gap: 47px;
     justify-content: center;
+  }
+
+  .submit {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 49px;
+    margin-top: 47px;
+    &__message {
+      font-weight: italic;
+      font-style: italic;
+      color: #8C8C8C;
+    }
+
+    &__button {
+      color: white;
+      font-size: 14px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 146px;
+      background-color: #1890FF;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07);
+      border-radius: 4px;
+    }
   }
 }

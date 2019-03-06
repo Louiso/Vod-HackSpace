@@ -1,14 +1,15 @@
-import React from 'react'
-import myVod from '../../api';
+import React, { useContext } from 'react'
 import GrabacionCard from '../GrabacionCard/GrabacionCard';
 import './GridGrabacion.scss'
+import VodContext from '../../Context/VodContext';
 
 const GridGrabacion = () => {
+  const { vod : { videoRespuestas }} = useContext(VodContext);
   return (
     <div className = "grid-grabacion">
       <div className = "grabacionCards-container">
-        { myVod.videoRespuestas.map((videoRespuesta, index)=>(
-          <GrabacionCard index = { index } key = { index } grabacion = { videoRespuesta }/>
+        { videoRespuestas.map((videoRespuesta, index)=>(
+          <GrabacionCard index = { index } key = { index } videoRespuesta = { videoRespuesta }/>
         ))}
       </div>
       <div className  = "submit">

@@ -1,28 +1,27 @@
 import React , { useEffect, useRef } from 'react';
+import './TimeStamp.scss';
+import { dateToString } from '../../../../helpers';
+
 
 const TimeStamp = ({videoRecorder}) => {
-  const getMinutes = () => {
-    const minutes = videoRecorder.timeStamp.getMinutes();
-    if(minutes < 10){
-      return `0${minutes}`
-    }return minutes;
-  }
-  const getSeconds = () => {
-    const seconds = videoRecorder.timeStamp.getSeconds();
-    if(seconds < 10){
-      return `0${seconds}`
-    }return seconds;
-  }
   const div = useRef(null);
   useEffect(()=>{
     const interval = setInterval(()=>{
-      div.current.innerHTML = `${getMinutes()}:${getSeconds()}`;
-    },1000);
+      const { chunks } = videoRecorder;
+      if(chunks.length > 0){
+        const number = videoRecorder.chunks.length * 33.48329463 + (-70.62745098);
+        const timeStamp = new Date();
+        timeStamp.setTime(number)
+        div.current.innerHTML = dateToString(timeStamp) 
+      }else{
+        div.current.innerHTML = '00:00:00'
+      }
+    },10);
     return ()=>{
       clearInterval(interval);
     }; 
   });
-  return <div className = "timeStamp" ref = {div}></div>;
+  return <div className = "timeStamp" ref = {div}>0:00</div>;
 }
 
 export default TimeStamp;

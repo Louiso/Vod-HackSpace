@@ -4,10 +4,19 @@
   background-color: white;
   box-shadow: 0 1px 4px 0 rgba(0,21,41,0.12);
   &__media{
-    width: 310px;
-    height: 200px;
     background-color: rgb(102, 122, 141);
     position: relative;
+    &__video{
+      width: 310px;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      &__wrapper{
+        overflow: hidden;
+        width: 310px;
+        height: 200px;
+      }
+    }
     .button-play{
       position: absolute;
       right: 30px;

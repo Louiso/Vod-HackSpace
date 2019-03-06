@@ -1,4 +1,7 @@
 import React from 'react';
+
+import './Introduccion.scss'
+
 const Introduccion = ({ goFaseGrabacion}) => {
   return(
     <>

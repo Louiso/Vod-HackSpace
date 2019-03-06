@@ -1,0 +1,22 @@
+.soporte-tecnico {
+  height: 32px;
+  width: 146px;
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+  margin-left: 1039px;
+  border-radius: 4px 4px 0 0;
+  color: white;
+  background-color: #FF8B08;
+  padding-left: 11px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  .name {
+    font-size: 12px;
+  }
+  .chat {
+    margin-left: 21px;
+    font-size: 16px;
+  }
+}
