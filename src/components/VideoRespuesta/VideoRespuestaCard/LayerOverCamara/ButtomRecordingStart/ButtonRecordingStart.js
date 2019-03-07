@@ -1,6 +1,7 @@
 import React from 'react';
 import './ButtonRecordingStart.scss';
-import { STATUS } from '../VideoRespuestaCard';
+import { STATUS } from '../../../../../config/VideoRespuestaCard';
+
 const ButtonRecordingStart = ({ handleAnimationEnd , status , setStatusStartAnimation }) => {
   const renderMessage = () => {
     if(status === STATUS.STOP ){

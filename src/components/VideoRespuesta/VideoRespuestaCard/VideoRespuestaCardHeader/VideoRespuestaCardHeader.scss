@@ -1,0 +1,48 @@
+.video-respuesta__header {
+  height: 120px;
+  width: 760px;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  position: relative;
+  background-color: white;
+  box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  transition: all 0.5s cubic-bezier(0.280, 0.840, 0.420, 1);
+  display: flex;
+  align-items: center;
+  &__before{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 120px;
+    width: 55px;
+    border-radius: 8px;
+  }
+  &__after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 8px;
+    height: 120px;
+    width: 55px;
+  }
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 55px;
+    padding-right: 55px;
+
+    .index {
+      color: #FF8B08;
+      font-size: 53px;
+    }
+
+    .pregunta {
+      width: 577px;
+      font-size: 23px;
+      color: #262626;
+      text-align: right;
+      font-weight: 500;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import VideoRespuestaCard from '../VideoRespuestaCard/VideoRespuestaCard';
 import './VideoRespuestaCardList.scss'
 import VodContext from '../../../Context/VodContext';
 
-const VideoRespuestaCardList = ({webRTC }) => {
+const VideoRespuestaCardList = ({ webRTC }) => {
   const { vod: { videoRespuestaActual, videoRespuestas } } = useContext(VodContext);
   const renderCardList = () => {
     return videoRespuestas.map((videoRespuesta, index) => {

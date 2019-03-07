@@ -49,7 +49,7 @@ const GrabacionCard = ({videoRespuesta, index}) => {
           videoRespuestaActual: index
         })}>
           <video 
-            poster = "https://us.123rf.com/450wm/victor4/victor41411/victor4141100020/33741924-retrato-de-un-hombre-sonriente-a-la-c%C3%A1mara.jpg?ver=6" 
+            poster = {!videoRespuesta.videoURL && "https://us.123rf.com/450wm/victor4/victor41411/victor4141100020/33741924-retrato-de-un-hombre-sonriente-a-la-c%C3%A1mara.jpg?ver=6"} 
             onEnded = { () => setStatus(STATUS.PAUSE) } 
             ref = {videoRef} 
             className = "grabacionCard__media__video" 

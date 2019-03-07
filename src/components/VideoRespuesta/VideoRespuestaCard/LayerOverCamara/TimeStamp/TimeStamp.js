@@ -1,7 +1,6 @@
 import React , { useEffect, useRef } from 'react';
 import './TimeStamp.scss';
-import { dateToString } from '../../../../helpers';
-
+import { dateToString } from '../../../../../helpers';
 
 const TimeStamp = ({videoRecorder}) => {
   const div = useRef(null);
@@ -14,7 +13,7 @@ const TimeStamp = ({videoRecorder}) => {
         timeStamp.setTime(number)
         div.current.innerHTML = dateToString(timeStamp) 
       }else{
-        div.current.innerHTML = '00:00:00'
+        div.current.innerHTML = '00:00'
       }
     },10);
     return ()=>{

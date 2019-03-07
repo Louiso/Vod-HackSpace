@@ -1,0 +1,94 @@
+.entrada{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  .feedback{
+    // position: relative;
+    margin-top: 13px;
+    padding-left: 13px;
+    padding-right: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 18px;
+    // background-color: green;
+  }
+  &__footer{
+    position: absolute;
+    width: 100%;
+    top: 284.5px;
+    
+    .progress{
+      margin-top: 8px;
+      background-color: #FF8B08;
+      height: 4px;
+    }
+  }
+}
+
+.button-black-transparent {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  height: 40px;
+  padding: 0px 13px;
+  box-shadow: 0 0 4px 0 rgba(0,21,41,0.12);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+.contador {
+  width: 208px;
+  justify-content: space-between;
+  position: absolute;
+  right: -44px;
+  top: 260px;
+  .message{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+  }
+  .number{
+    font-size: 23px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+.cancelar-fase{
+  position: absolute;
+  left: -44px;
+  top: 11px;
+  width: 130px;
+  justify-content: space-between;
+  &__icon{
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+  }
+  &__text{
+    
+  }
+}
+.grabar-nuevamente{
+  position: absolute;
+  width: 175px;
+  top: 208px;
+  right: -44px;
+  justify-content: flex-start;
+}
+.siguiente{
+  position: absolute;
+  justify-content: space-between;
+  right: -44px;
+  top: 260px;
+  width: 132px;
+  .icon{
+    font-size: 24px;
+  }
+}
